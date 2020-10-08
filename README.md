@@ -1,3 +1,15 @@
+# Coding Garden To Do App with Hooks
+
+**Author** Peter Cole  
+**Version** 1.0.0
+
+## Description
+
+- Code along with [Coding Garden](https://coding.garden/#/)'s [video](https://www.youtube.com/watch?v=9eSwZ0z-50c)
+- Simple to do app in order to practice Hooks
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
