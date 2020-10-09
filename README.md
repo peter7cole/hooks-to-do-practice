@@ -1,12 +1,15 @@
 # Coding Garden To Do App with Hooks
 
 **Author** Peter Cole  
-**Version** 1.0.0
+**Version** 1.0.1
 
 ## Description
 
 - Code along with [Coding Garden](https://coding.garden/#/)'s [video](https://www.youtube.com/watch?v=9eSwZ0z-50c)
 - Simple to do app in order to practice Hooks
+- `useState-useCallback` branch is a simple example of the useState and useCallback Hooks
+  - `useState()` returns an array with two elements, one the state, second a function to manipulate the state
+  - `useCallback()` creates a cached version of the function so it doesn't have to recreate any values on each render, as there are no dependencies on external state
 
 ---
 
