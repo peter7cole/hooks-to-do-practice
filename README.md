@@ -1,7 +1,7 @@
 # Coding Garden To Do App with Hooks
 
 **Author** Peter Cole  
-**Version** 1.0.0
+**Version** 1.0.2
 
 ## Description
 
