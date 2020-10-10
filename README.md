@@ -7,6 +7,9 @@
 
 - Code along with [Coding Garden](https://coding.garden/#/)'s [video](https://www.youtube.com/watch?v=9eSwZ0z-50c)
 - Simple to do app in order to practice Hooks
+  - `useState()`
+  - `useCallback()`
+  - `useEffect()`
 
 ## Developer Notes
 
