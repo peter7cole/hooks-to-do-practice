@@ -2,6 +2,9 @@ import React from 'react';
 import './ToDoItem.css';
 
 const ToDoItem = ({ todo, index, addTodo }) => {
+	const delClass = () => {
+		return todo.done ? 'done' : '';
+	};
 	return (
 		<div>
 			<li>
@@ -10,7 +13,7 @@ const ToDoItem = ({ todo, index, addTodo }) => {
 					type="checkbox"
 					onChange={addTodo(todo, index)}
 				/>
-				<span className={todo.done ? 'done' : ''}>{todo.content}</span>
+				<span className={delClass()}>{todo.content}</span>
 			</li>
 		</div>
 	);
