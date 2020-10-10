@@ -1,4 +1,5 @@
 import React from 'react';
+import './ToDoItem.css';
 
 const ToDoItem = ({ todo, index, addTodo }) => {
 	return (
@@ -9,19 +10,10 @@ const ToDoItem = ({ todo, index, addTodo }) => {
 					type="checkbox"
 					onChange={addTodo(todo, index)}
 				/>
-				{todo.content}
+				<span className={todo.done ? 'done' : ''}>{todo.content}</span>
 			</li>
 		</div>
 	);
 };
 
 export default ToDoItem;
-
-// event => {
-//   const newTodos = [...todos];
-//   newTodos.splice(index, 1, {
-//     ...todo,
-//     done: !todo.done,
-//   });
-//   setTodos(newTodos);
-// }
