@@ -1,28 +1,53 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import './App.css';
+import List from './components/List/List';
 
 const App = () => {
 	// useState returns an array that contains the value of the state item and a function that can manipulate that state
 	// As done below, passing in and initial default value of 'Peter'
 	const [newTodo, setNewTodo] = useState('');
+	const [todos, setTodos] = useState([]);
 	// useCallback creates a cached version of the function so it doesn't have to recreate any values on each render, no dependencies on external state
 	const onNewTodoChange = useCallback(event => {
-		console.log(event.target.value);
 		setNewTodo(event.target.value);
 	}, []);
+	// prevent default so it doesn't run until entered
+	const formSubmitted = useCallback(
+		event => {
+			event.preventDefault();
+			// if you try next to push straight into todo's, React won't know that the array has changed and state is immutable anyway, therefore setTodos() must be called
+			setTodos([
+				...todos,
+				{
+					id: todos.length + 1,
+					content: newTodo,
+					done: false,
+				},
+			]);
+			setNewTodo('');
+		},
+		[newTodo, todos]
+	);
+
+	// useEffect, insead of running on each render, only runs if a mutation in the dependency is detected, can do cleanup here such as removing event listeners
+	useEffect(() => {
+		console.log('todos ya noi', todos);
+	}, [todos]);
+
 	return (
 		<div className="App">
-			<h1>Hello! I am your To Do List</h1>
-			<form>
-				<label htmlFor="newTodo">New To Do Item</label>
+			<form onSubmit={formSubmitted}>
+				<label htmlFor="newTodo">Enter a New To Do Item</label>
 				<input
 					id="newTodo"
 					name="newTodo"
 					value={newTodo}
-					placeholder="Name"
+					placeholder="Entry"
 					onChange={onNewTodoChange}
 				/>
+				<button>Add Todo</button>
 			</form>
+			<List list={todos} />
 		</div>
 	);
 };
