@@ -1,7 +1,7 @@
 import React from 'react';
 import ToDoItem from '../ToDoItem/ToDoItem';
 //names here are generalized to make a reusable component
-const List = ({ list, setTodos }) => {
+const List = ({ list, addListItem }) => {
 	return (
 		<div>
 			<ul>
@@ -9,9 +9,8 @@ const List = ({ list, setTodos }) => {
 					<ToDoItem
 						key={listItem.id}
 						todo={listItem}
-						todos={list}
-						setTodos={setTodos}
 						index={index}
+						addTodo={addListItem}
 					/>
 				))}
 			</ul>

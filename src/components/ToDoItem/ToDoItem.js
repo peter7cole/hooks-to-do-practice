@@ -1,20 +1,13 @@
 import React from 'react';
 
-const ToDoItem = ({ todo, todos, index, setTodos }) => {
+const ToDoItem = ({ todo, index, addTodo }) => {
 	return (
 		<div>
 			<li>
 				<input
 					checked={todo.done}
 					type="checkbox"
-					onChange={event => {
-						const newTodos = [...todos];
-						newTodos.splice(index, 1, {
-							...todo,
-							done: !todo.done,
-						});
-						setTodos(newTodos);
-					}}
+					onChange={addTodo(todo, index)}
 				/>
 				{todo.content}
 			</li>
@@ -23,3 +16,12 @@ const ToDoItem = ({ todo, todos, index, setTodos }) => {
 };
 
 export default ToDoItem;
+
+// event => {
+//   const newTodos = [...todos];
+//   newTodos.splice(index, 1, {
+//     ...todo,
+//     done: !todo.done,
+//   });
+//   setTodos(newTodos);
+// }

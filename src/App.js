@@ -36,6 +36,18 @@ const App = () => {
 		console.log('todos', todos);
 	}, [todos]);
 
+	const addTodo = useCallback(
+		(todo, index) => event => {
+			const newTodos = [...todos];
+			newTodos.splice(index, 1, {
+				...todo,
+				done: !todo.done,
+			});
+			setTodos(newTodos);
+		},
+		[todos]
+	);
+
 	return (
 		<div className="App">
 			<form onSubmit={formSubmitted}>
@@ -49,7 +61,7 @@ const App = () => {
 				/>
 				<button>Add Todo</button>
 			</form>
-			<List list={todos} setTodos={setTodos} />
+			<List list={todos} addListItem={addTodo} />
 		</div>
 	);
 };
