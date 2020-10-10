@@ -1,6 +1,7 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import './App.css';
 import List from './components/List/List';
+import { nanoid } from 'nanoid';
 
 const App = () => {
 	// useState returns an array that contains the value of the state item and a function that can manipulate that state
@@ -16,10 +17,11 @@ const App = () => {
 		event => {
 			event.preventDefault();
 			// if you try next to push straight into todo's, React won't know that the array has changed and state is immutable anyway, therefore setTodos() must be called
+			if (!newTodo.trim()) return;
 			setTodos([
 				...todos,
 				{
-					id: todos.length + 1,
+					id: nanoid(),
 					content: newTodo,
 					done: false,
 				},
@@ -31,7 +33,7 @@ const App = () => {
 
 	// useEffect, insead of running on each render, only runs if a mutation in the dependency is detected, can do cleanup here such as removing event listeners
 	useEffect(() => {
-		console.log('todos ya noi', todos);
+		console.log('todos', todos);
 	}, [todos]);
 
 	return (
@@ -47,7 +49,7 @@ const App = () => {
 				/>
 				<button>Add Todo</button>
 			</form>
-			<List list={todos} />
+			<List list={todos} setTodos={setTodos} />
 		</div>
 	);
 };
